@@ -3,6 +3,7 @@
 #include<cstring>
 #include<climits>
 #include<string.h>
+#define inf 2e9
 using namespace std;
 
 int n = 5;
@@ -11,12 +12,12 @@ int energy[5], time[5];
 
 int solve(int en, int d, int it) {
     if(it < 0 || en < 0) {
-        return INT_MAX;
+        return inf;
     }
     if(d == 0) return 0;
     if(dp[en][d][it] != -1) return dp[en][d][it];
     int ans = min(solve(en, d, it-1), time[it] + solve(en - energy[it], d-1, it));
-    cout<<ans<<endl;
+    //cout<<ans<<endl;
     return dp[en][d][it] = ans;
 }
 
